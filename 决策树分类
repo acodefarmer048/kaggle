@@ -33,6 +33,24 @@ for pairidx, pair in enumerate([[0, 1], [0, 2], [0, 3],
     Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
     cs = plt.contourf(xx, yy, Z, cmap=plt.cm.RdYlBu)
+    
+    
+    
+    
+    
+    
+    import graphviz 
+from sklearn import tree
+dot_data = tree.export_graphviz(clf, out_file=None) 
+graph = graphviz.Source(dot_data) 
+graph.render("iris") 
+ot_data = tree.export_graphviz(clf, out_file=None, 
+                     feature_names=iris.feature_names,  
+                     class_names=iris.target_names,  
+                     filled=True, rounded=True,  
+                     special_characters=True)  
+graph = graphviz.Source(dot_data)  
+graph 
 
     plt.xlabel(iris.feature_names[pair[0]])
     plt.ylabel(iris.feature_names[pair[1]])

@@ -4,6 +4,13 @@ enc = OrdinalEncoder()
 X = [['Male', 1], ['Female', 3], ['Female', 2]]
 enc.fit(X)
 
+enc.categories_
+#[array(['Female', 'Male'], dtype=object), array([1, 2, 3], dtype=object)]
+enc.transform([['Female', 3], ['Male', 1]])
+#array([[0., 2.],[1., 0.]])
+
+
+
 from sklearn import preprocessing
 le = preprocessing.LabelEncoder()#标签编码，而不像ordinalencoder是特征编码，无法识别年龄、学历等本身带有顺序的字段.
 le.fit([1, 2, 2, 6])
@@ -13,9 +20,3 @@ le.transform([1, 1, 2, 6])
 #array([0, 0, 1, 2]...)
 le.inverse_transform([0, 0, 1, 2])
 #array([1, 1, 2, 6])
-
-
-enc.categories_
-#[array(['Female', 'Male'], dtype=object), array([1, 2, 3], dtype=object)]
-enc.transform([['Female', 3], ['Male', 1]])
-#array([[0., 2.],[1., 0.]])

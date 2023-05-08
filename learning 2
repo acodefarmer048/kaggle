@@ -1,0 +1,24 @@
+#polynomial regression
+
+x = [1,2,3,5,6,7,8,9,10,12,13,14,15,16,18,19,21,22]
+y = [100,90,80,60,60,55,60,65,70,70,75,76,78,79,90,99,99,100]
+#raw data
+
+#numpy.poly1d(array,r)  
+#r is set as false by default,and if array parameter equals to[1,2,3], it returns 1 * power x to 2  +  2 * power x to 1  +  3;
+#if r is set as true, then it returns (x-1)(x-2)(x-3)
+#A convenience class, used to encapsulate “natural” operations on polynomials so that said operations may take on their customary form in code.
+#document link: https://numpy.org/doc/stable/reference/generated/numpy.poly1d.html
+
+#numpy.polyfit(array_x,array_y,degree)
+#degree determines the biggest degree of the fitted polynomial,
+#Fit a polynomial p(x) = p[0] * x**deg + ... + p[deg] of degree deg to points (x, y). 
+#Returns a vector of coefficients p that minimises the squared error in the order deg, deg-1, … 0.
+
+mymodel=numpy.poly1d(numpy.polyfit(x,y,3))
+x_= numpy.linspace(1, 22, 100)
+y_predict=mymodel(x_)
+
+#How well does my data fit in a polynomial regression?
+from sklearn.metrics import r2_score
+print(r2_score(y, mymodel(x)))

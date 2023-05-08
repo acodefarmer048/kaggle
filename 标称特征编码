@@ -1,0 +1,27 @@
+enc = preprocessing.OrdinalEncoder()
+X = [['male', 'from US', 'uses Safari'], ['female', 'from Europe', 'uses Firefox']]
+enc.fit(X)
+
+enc.transform([['female', 'from US', 'uses Safari']])
+
+enc = preprocessing.OneHotEncoder()
+X = [['male', 'from US', 'uses Safari'], ['female', 'from Europe', 'uses Firefox']]
+enc.fit(X)
+
+enc.transform([['female', 'from US', 'uses Safari'],
+               ['male', 'from Europe', 'uses Safari']]).toarray()
+#array([[1., 0., 0., 1., 0., 1.],
+#       [0., 1., 1., 0., 0., 1.]])
+
+
+genders = ['female', 'male']
+locations = ['from Africa', 'from Asia', 'from Europe', 'from US']
+browsers = ['uses Chrome', 'uses Firefox', 'uses IE', 'uses Safari']
+enc = preprocessing.OneHotEncoder(categories=[genders, locations, browsers])
+# Note that for there are missing categorical values for the 2nd and 3rd
+# feature
+X = [['male', 'from US', 'uses Safari'], ['female', 'from Europe', 'uses Firefox']]
+enc.fit(X)
+
+
+enc.transform([['female', 'from Asia', 'uses Chrome']]).toarray()

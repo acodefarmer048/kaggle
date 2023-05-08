@@ -1,0 +1,12 @@
+import numpy as np
+from sklearn.preprocessing import PolynomialFeatures
+X = np.arange(6).reshape(3, 2)
+
+poly = PolynomialFeatures(2)
+poly.fit_transform(X)
+
+X = np.arange(9).reshape(3, 3)
+
+poly = PolynomialFeatures(degree=3, interaction_only=True)
+poly.fit_transform(X)
+

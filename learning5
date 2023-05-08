@@ -9,6 +9,20 @@ enc.categories_
 enc.transform([['Female', 3], ['Male', 1]])
 #array([[0., 2.],[1., 0.]])
 
+#常用方法有两个，一般fit_transform(x), 或者直接传categories参数，   
+#        categories_ : list of arrays
+#        The categories of each feature determined during ``fit`` (in order of
+#        the features in X and corresponding with the output of ``transform``).
+#        This does not include categories that weren't seen during ``fit``.
+ #示例：
+#genders = ['female', 'male']
+#locations = ['from Africa', 'from Asia', 'from Europe', 'from US']
+#browsers = ['uses Chrome', 'uses Firefox', 'uses IE', 'uses Safari']
+#enc = preprocessing.OneHotEncoder(categories=[genders, locations, browsers])
+### Note that for there are missing categorical values for the 2nd and 3rd
+### feature
+#X = [['male', 'from US', 'uses Safari'], ['female', 'from Europe', 'uses Firefox']]
+#enc.fit(X)
 
 
 from sklearn import preprocessing

@@ -1,0 +1,12 @@
+X = [[ 1., -1.,  2.],
+     [ 2.,  0.,  0.],
+     [ 0.,  1., -1.]]
+X_normalized = preprocessing.normalize(X, norm='l2')
+
+normalizer = preprocessing.Normalizer().fit(X)  # fit does nothing
+
+
+normalizer.transform(X)
+
+normalizer.transform([[-1.,  1., 0.]])
+#array([[-0.70710678,  0.70710678,  0.        ]])

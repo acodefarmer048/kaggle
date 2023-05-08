@@ -1,0 +1,40 @@
+from sklearn import preprocessing
+import numpy as np
+X_train = np.array([[ 1., -1.,  2.],
+                    [ 2.,  0.,  0.],
+                    [ 0.,  1., -1.]])
+scaler = preprocessing.StandardScaler().fit(X_train)
+
+
+scaler.mean_   #np.array  mean value for each feature
+scaler.scale_  #np.array  std value for each feature
+
+X_scaled = scaler.transform(X_train)
+
+X_scaled.mean(axis=0)
+X_scaled.std(axis=0)  #still able to calculate the mean or std value by each column
+
+X_train = np.array([[ 1., -1.,  2.],
+                    [ 2.,  0.,  0.],
+                    [ 0.,  1., -1.]])
+
+min_max_scaler = preprocessing.MinMaxScaler()
+X_train_minmax = min_max_scaler.fit_transform(X_train)
+
+X_test = np.array([[-3., -1.,  4.]])
+X_test_minmax = min_max_scaler.transform(X_test)
+
+
+
+
+
+X_train = np.array([[ 1., -1.,  2.],
+                    [ 2.,  0.,  0.],
+                    [ 0.,  1., -1.]])
+
+max_abs_scaler = preprocessing.MaxAbsScaler()
+X_train_maxabs = max_abs_scaler.fit_transform(X_train)
+
+X_test = np.array([[ -3., -1.,  4.]])
+X_test_maxabs = max_abs_scaler.transform(X_test)
+

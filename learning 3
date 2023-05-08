@@ -1,0 +1,17 @@
+#linear regression yet based on mutiple columns of independent value
+
+#stats.linregress(x, y),single value linear regression
+
+from sklearn import linear_model
+
+df = pandas.read_csv("data.csv")
+X = df[['Weight', 'Volume']]#X is capital
+y = df['CO2']
+
+regr = linear_model.LinearRegression()
+regr.fit(X, y)
+predictedCO2 = regr.predict([[2300, 1300]])
+#fit and predict, classic operations of estimator object in sklearn
+
+print(regr.coef_)
+#view the weight of each column
